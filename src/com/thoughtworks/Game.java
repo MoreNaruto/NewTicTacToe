@@ -2,7 +2,6 @@ package com.thoughtworks;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 /**
@@ -13,9 +12,10 @@ public class Game {
     public PrintStream out;
     public Board board;
     public Player player;
+    public BufferedReader reader;
 
-    public Game(PrintStream out, Board board, Player player) {
-
+    public Game(BufferedReader reader, PrintStream out, Board board, Player player) {
+        this.reader = reader;
         this.out = out;
         this.board = board;
         this.player = player;
@@ -23,7 +23,7 @@ public class Game {
 
     public void newGame() throws IOException {
         board.emptyboard();
-        player.playerMove();
+        player.makeMove(reader);
     }
 
 

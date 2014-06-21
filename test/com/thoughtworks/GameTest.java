@@ -16,6 +16,7 @@ public class GameTest {
 
     private Game game;
     private PrintStream mockStream;
+    private BufferedReader mockReader;
     private Board mockBoard;
     private Player mockPlayer;
     @Before
@@ -23,15 +24,15 @@ public class GameTest {
         mockBoard = mock(Board.class);
         mockPlayer = mock(Player.class);
         mockStream = mock(PrintStream.class);
-        game = new Game(mockStream, mockBoard, mockPlayer);
+        mockReader = mock(BufferedReader.class);
+        game = new Game(mockReader, mockStream, mockBoard, mockPlayer);
     }
 
     @Test
     public void testNewGame() throws IOException {
-        BufferedReader mockReader = mock(BufferedReader.class);
         game.newGame();
         verify(mockBoard).emptyboard();
-        verify(mockPlayer).playerMove();
+        verify(mockPlayer).makeMove(mockReader);
     }
 
 }

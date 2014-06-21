@@ -2,7 +2,6 @@ package com.thoughtworks;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 /**
@@ -26,10 +25,16 @@ public class Player {
         this.board = board;
     }
 
-    public void playerMove() throws IOException {
+    public void makeMove(BufferedReader reader) throws IOException {
         place = placeOnBoard(reader);
+        playerMove();
+    }
+
+    public void playerMove() throws IOException {
+
         if (place == -1){
-            playerMove();
+            out.println("Your input was incorrect! \n");
+            this.makeMove(reader);
         } else {
             if (player1Turn){
                 boardPieces[place - 1] = "X";
@@ -53,7 +58,7 @@ public class Player {
             } else {
                 out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                 board.makeboard();
-                playerMove();
+                makeMove(reader);
             }
         }
 

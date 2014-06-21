@@ -65,9 +65,9 @@ public class PlayerTest {
     public void testPlacementErrorRedo() throws IOException {
 
         when(mockReader.readLine()).thenReturn("-1");
-        player.playerMove();
-
-        verify(player).playerMove();
+        player.makeMove(mockReader);
+        verify(mockStream).println("Your input was incorrect! \n");
+        
     }
 
 

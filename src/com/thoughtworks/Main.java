@@ -10,9 +10,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String[] boardPlaces = new String[9];
         PrintStream out = System.out;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Board board = new Board(out, boardPlaces);
-        Player players = new Player(boardPlaces, board, new BufferedReader(new InputStreamReader(System.in)), out);
-        Game tictactoe = new Game(out, board, players);
+        Player players = new Player(boardPlaces, board, reader, out);
+        Game tictactoe = new Game(reader, out, board, players);
         tictactoe.newGame();
     }
 }
