@@ -10,6 +10,8 @@ import java.io.PrintStream;
  */
 public class Player {
 
+    public boolean isWinner;
+    public int place;
     public boolean player1Turn = true;
     public String[] boardPieces = new String[9];
     public BufferedReader reader;
@@ -25,23 +27,22 @@ public class Player {
     }
 
     public void playerMove() throws IOException {
-        boolean winner;
-        int place = placeOnBoard();
+        place = placeOnBoard(reader);
         if (place == -1){
             playerMove();
         } else {
             if (player1Turn){
                 boardPieces[place - 1] = "X";
                 Winner win = new Winner(this.boardPieces, "X");
-                winner = win.isWinner();
+                isWinner = win.isWinner();
                 player1Turn = false;
             } else {
                 boardPieces[place - 1] = "O";
                 Winner win = new Winner(this.boardPieces, "O");
-                winner = win.isWinner();
+                isWinner = win.isWinner();
                 player1Turn = true;
             }
-            if (winner){
+            if (isWinner){
                 out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
                 board.makeboard();
                 if (player1Turn){
@@ -58,12 +59,7 @@ public class Player {
 
     }
 
-    public int placeOnBoard() throws IOException {
-        if(this.player1Turn){
-            out.println("It's Player 1 Turn");
-        } else {
-            out.println("It's Player 2 Turn");
-        }
+    public int placeOnBoard(BufferedReader reader) throws IOException {
         out.print("Please enter a place on the boardPlaces (1-9): ");
         int place = Integer.parseInt(reader.readLine());
         if(place > 9 || place < 1){

@@ -28,10 +28,11 @@ public class Board {
     }
 
     public void makeboard() {
-        out.println(boardPlaces[0].concat(" |").concat(boardPlaces[1]).concat(" |").concat(boardPlaces[2]));
-        out.println("--------");
-        out.println(boardPlaces[3].concat(" |").concat(boardPlaces[4]).concat(" |").concat(boardPlaces[5]));
-        out.println("--------");
-        out.println(boardPlaces[6].concat(" |").concat(boardPlaces[7]).concat(" |").concat(boardPlaces[8]));
+        out.println(
+                " " + boardPlaces[0] + "| " + boardPlaces[1] +"| " + boardPlaces[2] +"\n" +
+                "--------\n" +
+                " " + boardPlaces[3] + "| " + boardPlaces[4] +"| " + boardPlaces[5] +"\n" +
+                "--------\n" +
+                " " + boardPlaces[6] + "| " + boardPlaces[7] +"| " + boardPlaces[8]);
     }
 }
