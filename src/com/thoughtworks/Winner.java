@@ -19,6 +19,7 @@ public class Winner {
     private List<Integer> winner6 = new ArrayList<Integer>(Arrays.asList(2, 5, 8));
     private List<Integer> winner7 = new ArrayList<Integer>(Arrays.asList(3, 6, 9));
     private List<Integer> winner8 = new ArrayList<Integer>(Arrays.asList(3, 5, 7));
+
     public Winner(String[] board, String boardPiece){
         this.board = board;
         this.boardPiece = boardPiece;
